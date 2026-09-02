@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodExpress</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            margin: 10px 0;
+            background: #f5f5f5;
+            border-radius: 8px;
+        }
+
+        input {
+            width: 60px;
+            padding: 5px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: #222;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .ci {
+            margin-top: 30px;
+            padding: 20px;
+            background: #eee;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🍔 FoodExpress</h1>
+
+    <p>
+        Shopping Cart — Continuous Integration Practical
+    </p>
+
+    <div class="item">
+        <span>Burger - ₹100</span>
+        <input type="number" id="burger" value="2" min="0">
+    </div>
+
+    <div class="item">
+        <span>Fries - ₹50</span>
+        <input type="number" id="fries" value="1" min="0">
+    </div>
+
+    <div class="item">
+        <span>Pizza - ₹200</span>
+        <input type="number" id="pizza" value="1" min="0">
+    </div>
+
+    <button onclick="calculateTotal()">
+        Calculate Total
+    </button>
+
+    <div id="result"></div>
+
+    <div class="ci">
+        <h2>Continuous Integration</h2>
+
+        <p>
+            This project uses automated testing to check
+            whether the application is working correctly.
+        </p>
+
+        <p>
+            CI tools used: GitHub Actions and Jenkins
+        </p>
+    </div>
+
+</div>
+
+<script>
+    function calculateTotal() {
+
+        const burger =
+            Number(document.getElementById("burger").value);
+
+        const fries =
+            Number(document.getElementById("fries").value);
+
+        const pizza =
+            Number(document.getElementById("pizza").value);
+
+        const total =
+            (burger * 100) +
+            (fries * 50) +
+            (pizza * 200);
+
+        const discount = total * 10 / 100;
+
+        const finalAmount = total - discount;
+
+        document.getElementById("result").innerHTML =
+            "Cart Total: ₹" + total +
+            "<br>10% Discount: ₹" + discount +
+            "<br>Final Amount: ₹" + finalAmount;
+    }
+</script>
+
+</body>
+</html>
